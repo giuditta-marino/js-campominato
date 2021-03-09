@@ -9,10 +9,42 @@ console.log(bombsArray);
 function numberRandomInRange(array, max){
   while (array.length < 16) {
      var numberComputer = Math.floor(Math.random() * (max - 1 + 1) + 1);
-     console.log(numberComputer);
     if (!(array.includes(numberComputer))) {
       array.push(numberComputer);
     }
   }
   return array;
+}
+
+
+// CREO UN ARRAY PER INSERIRCI I NUMERI FORNITI DALL'UTENTE
+safeArray = [];
+
+// RICHIAMO LA FUNZIONE
+var punteggio = game(bombsArray, safeArray, 100);
+console.log("game over");
+console.log(punteggio);
+console.log(safeArray);
+
+// CHIEDERE ALL'UTENTE DI INSERIRE UN NUMERO ALLA VOLTA (FINO A UN MASSIMO DI 100 - 16 VOLTE) COMPRESO TRA 1 E 100.
+  // CONTROLLO CHE IL NUMERO NON SIA RIPETUTO
+    // CONTROLLO CHE IL NUMERO SIA UN NUMERO
+      // CONTROLLO SE IL NUMERO E' PRESENTE NELL'ARRAY, SE LO E' FACCIO TERMINARE LA PARTITA, ALTRIMENTI CHIEDO UN ALTRO NUMERO
+
+function game(bombsArray, safeArray, max){
+  while (safeArray.length < max - 16) {
+    var numeroUtente = parseInt(prompt("Inserisci un numero compreso tra 1 e 100 e prova ad evitare le bombe:"));
+
+    if (!isNaN(numeroUtente) && 1 <= numeroUtente && numeroUtente <= max && !safeArray.includes(numeroUtente)) {
+      if (!bombsArray.includes(numeroUtente)) {
+          safeArray.push(numeroUtente);
+          console.log(numeroUtente);
+      } else {
+        return safeArray.length;
+      }
+    } else {
+      return safeArray.length;
+    }
+  }
+  return safeArray.length;
 }
