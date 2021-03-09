@@ -1,5 +1,5 @@
 // CHIEDO ALL'UTENTE LIVELLO DI DIFFICOLTA'
-var livello = parseInt(prompt("Scegli un livello di difficoltà tra 0 e 2:"));
+var livello = prompt("Scegli un livello di difficoltà tra 0 e 2:");
 
 
 // CREO UN ARRAY PER INSERIRCI DENTRO I NUMERI BOMBA
@@ -11,6 +11,8 @@ safeArray = [];
 
 // APPLICO LA FUNZIONE CAMBIANDO IL PARAMETRO MAX IN BASE AL LIVELLO SCELTO DALL'UTENTE
 switch (livello) {
+  default:
+  alert("Visto che non hai scelto un livello, partirai dal livello più facile!")
   case "0":
   bombs = numberRandomInRange(bombsArray, 100);
   console.log(bombsArray);
@@ -30,8 +32,6 @@ switch (livello) {
   var punteggio = game(bombsArray, safeArray, 50, "Inserisci un numero compreso tra 1 e 50 e prova ad evitare le bombe:");
 
     break;
-  default:
-    alert('Scrivi un numero tra 0 e 2');
 }
 
 // CREO UNA FUNZIONE PER GENERARE UN NUMERO RANDOM ENTRO UN RANGE CHE INSERISCA IL NUMERO DENTRO UN ARRAY SE IL NUMERO NON E' GIA PRESENTE ALL'INTERNO DI ESSO (PER EVITARE I NUMERI DUPLICATI)
