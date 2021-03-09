@@ -22,9 +22,9 @@ safeArray = [];
 
 // RICHIAMO LA FUNZIONE
 var punteggio = game(bombsArray, safeArray, 100);
+document.getElementById('punteggio').innerHTML = "Game over" + "<br>" + "Il tuo punteggio è: " + punteggio;
 console.log("game over");
 console.log(punteggio);
-console.log(safeArray);
 
 // CHIEDERE ALL'UTENTE DI INSERIRE UN NUMERO ALLA VOLTA (FINO A UN MASSIMO DI 100 - 16 VOLTE) COMPRESO TRA 1 E 100.
   // CONTROLLO CHE IL NUMERO NON SIA RIPETUTO
