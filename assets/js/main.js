@@ -47,7 +47,6 @@ function numberRandomInRange(array, max){
 
 
 // RICHIAMO LA FUNZIONE
-var punteggio = game(bombsArray, safeArray, 100);
 document.getElementById('punteggio').innerHTML = "Game over" + "<br>" + "Il tuo punteggio è: " + punteggio;
 console.log("game over");
 console.log(punteggio);
@@ -59,20 +58,17 @@ console.log(punteggio);
 function game(bombsArray, safeArray, max, promptText){
   while (safeArray.length < max - 16) {
     var numeroUtente = parseInt(prompt(promptText));
-
-    if (!isNaN(numeroUtente) && 1 <= numeroUtente && numeroUtente <= max && !safeArray.includes(numeroUtente)) {
+    console.log(numeroUtente)
+    if (1 <= numeroUtente && numeroUtente <= max && !safeArray.includes(numeroUtente)) {
       if (!bombsArray.includes(numeroUtente)) {
           safeArray.push(numeroUtente);
-          console.log(numeroUtente);
       } else {
         return safeArray.length;
       }
-    } else {
+    } else if (isNaN(numeroUtente)) {
+      alert("Non hai inserito un valore adatto, sei uscito dal gioco!");
       return safeArray.length;
     }
   }
   return safeArray.length;
 }
-
-// CHIEDO ALL'UTENTE LIVELLO DI DIFFICOLTA'
-// SE IL LIVELLO DI DIFFICOLTA' E' 0 IL RANGE DI NUMETRI E' TRA 1 E 100, CON LIVELLO 1 TRA 1 E 80, CON LIVELLO 2 TRA 1 E 50;
